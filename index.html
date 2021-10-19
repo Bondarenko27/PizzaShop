@@ -25,36 +25,39 @@
     <div class="receipt" id="bill">
         <p>Buy something to get your receipt</p>
     </div>
-    <div class="bill_content1" id="content1"><span id="Cheese_pizza"></span></div>­<br>
+    <div class="bill_content1"><span id="content1"></span></div>­<br>
     <div class="bill_content2" id="content2"><span id="Vegan_pizza"></span></div><br>
     <div class="bill_content3" id="content3"><span id="subtotal"></span></div><br>
     <div class="bill_content4" id="content4"><span id="tvq"></span></div><br>
     <div class="bill_content5" id="content5"><span id="tps"></span></div><br>
     <div class="bill_content6" id="content6"><span id="total"></span></div><br>
             
-        <script>
-        
+    <script>
+
         var button = document.getElementById("buy_btn");
-         button.addEventListener('click', e =>{
-        var input_cheese = parseInt(document.getElementById("cheese_p").value);
-        var input_vegan = parseInt(document.getElementById("vegan_p").value);
-        var price_cheese = 5*input_cheese;
-        var price_vegan =  7*input_vegan;
-        var subtotal = price_cheese + price_vegan;
-        var QST = (subtotal * 10)/100;
-        var GST = (subtotal * 5)/100;
-        var total = subtotal + QST + GST;
-        console.log(price_cheese, price_vegan,subtotal,QST ,GST,total)
-        document.getElementById("bill").innerHTML = "<p>Thank you for purchase!</p>"+ "</br>"
-        document.getElementById("content1").innerHTML= document.getElementById("Cheese_pizza").innerHTML= "Cheese Pizza:" + price_cheese
-        document.getElementById("content2").innerHTML= document.getElementById("Vegan_pizza").innerHTML="Vegeterian Pizza:" + price_vegan
-        document.getElementById("content3").innerHTML= document.getElementById("subtotal").innerHTML="Subtotal:" + subtotal
-        document.getElementById("content4").innerHTML= document.getElementById("tvq").innerHTML="TVQ:" + QST
-        document.getElementById("content5").innerHTML= document.getElementById("tps").innerHTML="TPS:" + GST
-        document.getElementById("content6").innerHTML= document.getElementById("total").innerHTML="Total:" + Math.round(total)
+        button.addEventListener('click', e =>{
+
+            var input_cheese = parseInt(document.getElementById("cheese_p").value);
+            var input_vegan = parseInt(document.getElementById("vegan_p").value);
+
+            var price_cheese = 5 * input_cheese;
+            var price_vegan =  7 * input_vegan;
+
+            var subtotal = price_cheese + price_vegan;
+
+            var QST = (subtotal * 10)/100;
+            var GST = subtotal * 0.05;
+
+            var total = subtotal + QST + GST;
+
+            document.getElementById("bill").innerHTML = "<p>Thank you for purchase!</p>"+ "</br>";
+            document.getElementById("content1").innerHTML= "Cheese Pizza:" + price_cheese + "$";
+            document.getElementById("Vegan_pizza").innerHTML="Vegeterian Pizza:" + price_vegan + "$";
+            document.getElementById("subtotal").innerHTML="Subtotal:" + subtotal + "$";
+            document.getElementById("tvq").innerHTML="TVQ:" + QST;
+            document.getElementById("tps").innerHTML="TPS:" + GST + "$";
+            document.getElementById("total").innerHTML="Total:" + Math.round(total) + "$";
         })
-        
       </script>
 </body>
-
 </html>
